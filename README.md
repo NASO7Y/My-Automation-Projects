@@ -2,7 +2,7 @@
 
 
 ## (1) 📩 Sheet Auto Responder
-
+(Auto Responder/auto responder.png)
 This project automates the process of reading user data from a Google Sheet, generating an AI-based response using a large language model (LLM), and sending that response via Gmail — while also logging the reply back to a Google Sheet.
 
 ### ⚙️ Workflow Overview
