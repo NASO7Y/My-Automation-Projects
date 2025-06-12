@@ -29,6 +29,7 @@ The automation is executed when the user manually triggers the workflow. The ste
 
 ## 🧠 Technologies Used
 
+-------------------------------------------------------------------------------------------
 - **Google Sheets** – for reading user queries and logging responses.
 - **Google Gemini Chat Model** – for generating intelligent responses.
 - **Gmail API** – for sending automated emails.
