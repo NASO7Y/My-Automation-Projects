@@ -1,4 +1,6 @@
 # My-Automation-Projects
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
 
 ## (1) 📩 Sheet Auto Responder
@@ -29,9 +31,13 @@ The automation is executed when the user manually triggers the workflow. The ste
 
 ## 🧠 Technologies Used
 
--------------------------------------------------------------------------------------------
 - **Google Sheets** – for reading user queries and logging responses.
 - **Google Gemini Chat Model** – for generating intelligent responses.
 - **Gmail API** – for sending automated emails.
 - **Basic LLM Chain** – integration pipeline between input and the LLM.
 - **Wait Node** – introduces a 30-second delay before sending the email.
+
+
+
+-------------------------------------------------------------------------------------------
+
