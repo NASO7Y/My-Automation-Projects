@@ -54,3 +54,23 @@ The final step is to Update **Google Sheet**, where the scraped data (up to 250 
 
 This project automates the process of handling daily job application messages, filtering relevant job offers based on personal qualifications, generating tailored job applications, and sending them via email to the respective companies.
 
+### ⚙️ Workflow Overview
+I subscribed in a Jobs service which gives me a message daily that contains job applications 
+The automation is triggered when a message containing the word “job” in the title arrives. The steps are as follows:
+
+**The first step is executed when the message containing the word “job” in the title arrives**.
+
+ After that, I created an **edit field** to clean and split the jobs into arrays, every array is linked to an individual job offer.  
+ 
+The array goes directly to the **split out** step to change the array into a proper schema that can be fed into the LLM chain. The first LLM model has my own personal, Technical data and filters the jobs based on my data into 2 categories   
+
+`1- useful job offers\> match my skills and qualifications   
+2- not useful job offers\> doesn’t match my skills and qualifications`
+
+
+
+After that, it goes to the filter to keep the **useful job offers** and neglect the not useful job offers.
+
+when the data that comes out is only useful now, it goes to two LLM Chains to create the job application for the companies, the first one gathers info about the company and generate it,   
+The second one creates the right schema of the Email that’ll be sent to the companies,   
+The final step is feeding the data that comes from the final node into the email to send the job applications to the **useful job offer**  
