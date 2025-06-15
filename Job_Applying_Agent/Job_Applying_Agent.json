@@ -1,0 +1,484 @@
+{
+  "name": "Job Applying Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "subject:JOBS!!"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d8adf692-cdb7-4197-8d68-a8d14d9e09e5",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "w3omY2pwWfghe0Nm",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "772e4ab6-1cf2-4428-8441-aa77b762a772",
+              "name": "text",
+              "value": "={{ $json.text.split(\"--------------------------------------------------------------------------\").last().split(\"************\") }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        0
+      ],
+      "id": "96fe52fd-26fb-4fb7-be48-e28ba6f5f9cb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        700,
+        -100
+      ],
+      "id": "f0a9ec4a-6de6-4d16-a4a0-20f9c4d63cfd",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "bqdeLRFK86kkvvD4",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=I’m an Artificial Intelligence engineer, interested in Machine Learning, Data Analysis, and Product Innovation.\n\nPlease find only the similar jobs in the {{ $json.text }} to me inand for each job, mark it as:\n\nuseful: yes if it aligns with Artificial Intelligence, Machine Learning, Data Analysis, or Product Innovation\n\nuseful: no if it’s not directly related\n\ni Want you to answer with this format only, no more words but :\n\" job: \" everything about the job, Useful:yes\" if it is relevant \n\"job: \" everything about the job, Useful:no\" if it is not relevant",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "you are a job classifier "
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        820,
+        0
+      ],
+      "id": "46f964d4-69e8-4d29-8843-907bcb0df99d",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        540,
+        0
+      ],
+      "id": "1851caee-8817-4307-b200-0a9da01cb904",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7d9c5acd-7025-4442-b974-65538bf40853",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "Useful:yes",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        0
+      ],
+      "id": "0fe5f55a-9638-417d-8568-da88cdf3c6e7",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        360
+      ],
+      "id": "f26e89c4-8b3c-4500-b9c5-201c035f87fc",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "bqdeLRFK86kkvvD4",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=I want you Write a professional job application that Says the next :\n\"\"\"\nHello [Author's name], \n\nMy name is Ahmed Noshy\nI am writing to express my strong interest in applying for a position as an [Job name] at [Company Name]. I’m passionate about applying cutting-edge technologies to solve real-world problems and drive innovation — and I believe my skills and background align closely with your needs.\n\nI am currently pursuing a Bachelor's degree in Artificial Intelligence at Menoufia University. My expertise covers machine learning, deep learning, computer vision, and natural language processing, and I am proficient in Python, TensorFlow, PyTorch, OpenCV, and Scikit-learn.\n\ni Read About your job offer which says [ Everything useful you can get from the text]\n\n\nit'd be an honor to me to apply in you beloved company\n\nMy Email: Ahmed.noshy2004@gmail.com\nMy phone number : +201063944671\n\nThank you so much \n\ncheers,\nAhmed.\n\"\"\"\n\nExtract every information that in the []  from the text : {{ $json.text }} ",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "you are a Professional job application agent, every word you say will be encluded in the email that will be sent, try not to show that you are an ai."
+            },
+            {
+              "type": "AIMessagePromptTemplate",
+              "message": "don't ever say anything except the words in the begging , never say okay i will do or anything but the email content"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        280,
+        300
+      ],
+      "id": "4995427f-2bbb-4fbd-b757-1b428d455a7a",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "content": "## Handle the data",
+        "height": 280,
+        "width": 1520,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -20,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "085b4f6d-e02b-4b83-96e2-4037ac166cab",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.text }}",
+        "subject": "Job application",
+        "message": "={{ $('Basic LLM Chain1').item.json.text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1300,
+        300
+      ],
+      "id": "d52cfdd7-fe8b-4fc4-9a85-952eb092b4e1",
+      "name": "Gmail",
+      "webhookId": "d369d781-3a43-4895-9268-6669b9a51b6f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "w3omY2pwWfghe0Nm",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Generate the Email",
+        "height": 340,
+        "width": 1520,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -20,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "1e23cf00-8810-4eea-a0ea-f4b59ecdc8fd",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Extract the email address from the following message. If there is no email address, respond with ‘Not found’, if there is more than one, Get the first one only.\n\nMessage:{{ $('Filter').item.json.text }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "you are a text extractor, extract only what you are meant to extract only!"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        760,
+        300
+      ],
+      "id": "222597e8-aa8a-4589-88a2-3decdd8e8b3f",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        400
+      ],
+      "id": "a5556476-6829-48d9-ab9f-0b5b558bc87a",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "bqdeLRFK86kkvvD4",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Job applying Agent\n- Gets the Message that contains \"JOB\" from my email `Ahmed.Noshy2004@gmail.com` and process it untill making useful job application",
+        "height": 80,
+        "width": 960
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -240
+      ],
+      "id": "99f0cc7f-9906-40f5-943f-eb0e0254eccf",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Basic LLM Chain": [
+      {
+        "json": {
+          "text": "\"job: Data Analyst – City Pulse Tech\nTo: Sarah Martinez — *sarah.martinez@citypulse.com*\n\n🚀 SOS! City Pulse needs a data sleuth, and I’m your person! I transitioned\nfrom investigative reporting into data analysis, using my investigative\nskills to uncover patterns in large datasets. I’m proficient in Python,\nSQL, and data visualization. Sarah, please, let’s connect ASAP and find\nstories hidden in your data! Useful:yes\""
+        }
+      },
+      {
+        "json": {
+          "text": "job: 🔹 UX Writer – Horizon Tech\n\nTo: James Patel — *james.patel@horizontech.com\n<james.patel@horizontech.com>*\n\n🚀 MAYDAY! I’m a storyteller ready to craft clear, human-centric UX content\nfor Horizon! My background in writing makes me perfect for designing\nmessages that connect with users. James, check my portfolio and rescue me\nnow!\nUseful:no"
+        }
+      },
+      {
+        "json": {
+          "text": "job: 🔹 Digital Product Manager – Digital Scoop Tech\n\nTo: Emily Chen — *emily.chen@digitalscooptech.com\n<emily.chen@digitalscooptech.com>*\n\n🚀 SOS! Digital Scoop’s products need a leader who can blend multimedia\nexpertise with Product Management. I’m proficient in designing roadmaps,\nmentoring teams, and using data to drive decisions. Emily, let me amplify\nyour products — contact me stat!, Useful:yes\n\njob: 🔹 Machine Learning Engineer – State Tech\n\nTo: Michael Okoye — *michael.okoye@statetech.com\n<michael.okoye@statetech.com>*\n\n🚀 HELP! I’m ready to apply my analytical skills to Machine Learning. I\nhave a strong background in policy analysis and can leverage this to create\nimpactful models. Michael, let’s connect and innovate together!, Useful:yes"
+        }
+      },
+      {
+        "json": {
+          "text": "job: 🔹 Tech Lead – Urban Tech\n\nTo: Rachel Nguyen — *rachel.nguyen@urbantech.com\n<rachel.nguyen@urbantech.com>*\n\n🚀 URGENT! Urban Tech needs a Tech Lead who can mentor engineers and drive\ndelivery. My editorial leadership converts well into technical team\nleadership. Rachel, please pull me aboard now! Useful: no"
+        }
+      },
+      {
+        "json": {
+          "text": "job: 🔹 Cybersecurity Analyst – National Tech\nTo: David Rosenberg — *david.rosenberg@nationaltech.com*\n\n🚀 SOS! The National Tech team needs a vigilant defender. My investigative\nbackground makes me perfect for spotting vulnerabilities and protecting the\nstack. David, let’s connect and safeguard together!\nUseful:no\n\njob: 🔹 Gaming Product Manager – Metro Tech\nTo: Aisha Khan — *aisha.khan@metrotech.com*\n\n🚀 MAYDAY! I’m a gamer at heart and a Product Manager by profession. My\nability to connect with players and stakeholders makes me perfect for\nshaping future games. Aisha, let’s team up soon!\nUseful:yes"
+        }
+      },
+      {
+        "json": {
+          "text": "\"job: 🔹 SEO Specialist – Culture Tech\n\nTo: Carlos Rivera — *carlos.rivera@culturetech.com\n<carlos.rivera@culturetech.com>*\n\n🚀 HELP! Culture Tech’s digital growth depends on SEO expertise. My\nbackground in writing, combined with SEO skills, makes me a perfect match.\nCarlos, save this SEO pro — email me now!, Useful:no\"\n\n\"job: 🔹 Climate Tech Product Manager – Green Tech\n\nTo: Laura Bianchi — *laura.bianchi@greentech.com\n<laura.bianchi@greentech.com>*\n\n🚀 SOS! Green Tech’s mission calls me! My climate reporting background\nmerges nicely with Product Management in climate tech. Laura, I’m ready to\ninnovate — rescue me quick!, Useful:yes\"\n\n\"job: 🔹 Quality Assurance Engineer – Coastal Tech\n\nTo: Thomas Weber — *thomas.weber@coastaltech.com\n<thomas.weber@coastaltech.com>*\n\n🚀 URGENT! Coastal Tech needs a detail-oriented Quality Engineer, and I’m\nit! My editor’s eye for detail converts seamlessly into testing software.\nThomas, let me assure your products’ quality — contact me now!, Useful:no\""
+        }
+      }
+    ],
+    "Basic LLM Chain1": [
+      {
+        "json": {
+          "text": "Hello Sarah Martinez,\n\nMy name is Ahmed Noshy. I am writing to express my strong interest in applying for a position as a Data Analyst at City Pulse Tech. I’m passionate about applying cutting-edge technologies to solve real-world problems and drive innovation — and I believe my skills and background align closely with your needs.\n\nI am currently pursuing a Bachelor's degree in Artificial Intelligence at Menoufia University. My expertise covers machine learning, deep learning, computer vision, and natural language processing, and I am proficient in Python, TensorFlow, PyTorch, OpenCV, and Scikit-learn.\n\nI read about your job offer, which says you need a data sleuth and that you want to uncover patterns in large datasets, also you want someone that is proficient in Python, SQL, and data visualization.\n\nIt'd be an honor to me to apply in you beloved company.\n\nMy Email: Ahmed.noshy2004@gmail.com\nMy phone number: +201063944671\n\nThank you so much.\n\nCheers,\nAhmed."
+        }
+      },
+      {
+        "json": {
+          "text": "Hello [Author's name], \n\nMy name is Ahmed Noshy. I am writing to express my strong interest in applying for a position as a [Machine Learning Engineer] at [State Tech]. I’m passionate about applying cutting-edge technologies to solve real-world problems and drive innovation — and I believe my skills and background align closely with your needs.\n\nI am currently pursuing a Bachelor's degree in Artificial Intelligence at Menoufia University. My expertise covers machine learning, deep learning, computer vision, and natural language processing, and I am proficient in Python, TensorFlow, PyTorch, OpenCV, and Scikit-learn.\n\nI read about your job offer which says \"HELP! I’m ready to apply my analytical skills to Machine Learning. I have a strong background in policy analysis and can leverage this to create impactful models. Michael, let’s connect and innovate together!\"\n\nit'd be an honor to me to apply in you beloved company\n\nMy Email: Ahmed.noshy2004@gmail.com\nMy phone number : +201063944671\n\nThank you so much \n\ncheers,\nAhmed."
+        }
+      },
+      {
+        "json": {
+          "text": "Hello Aisha Khan, \n\nMy name is Ahmed Noshy\nI am writing to express my strong interest in applying for a position as a Gaming Product Manager at Metro Tech. I’m passionate about applying cutting-edge technologies to solve real-world problems and drive innovation — and I believe my skills and background align closely with your needs.\n\nI am currently pursuing a Bachelor's degree in Artificial Intelligence at Menoufia University. My expertise covers machine learning, deep learning, computer vision, and natural language processing, and I am proficient in Python, TensorFlow, PyTorch, OpenCV, and Scikit-learn.\n\nI Read About your job offer which says I’m a gamer at heart and a Product Manager by profession, and that my ability to connect with players and stakeholders makes me perfect for shaping future games. \n\nit'd be an honor to me to apply in you beloved company\n\nMy Email: Ahmed.noshy2004@gmail.com\nMy phone number : +201063944671\n\nThank you so much \n\ncheers,\nAhmed."
+        }
+      },
+      {
+        "json": {
+          "text": "Hello [Author's name], \n\nMy name is Ahmed Noshy. I am writing to express my strong interest in applying for a position as a [Climate Tech Product Manager] at [Green Tech]. I’m passionate about applying cutting-edge technologies to solve real-world problems and drive innovation — and I believe my skills and background align closely with your needs.\n\nI am currently pursuing a Bachelor's degree in Artificial Intelligence at Menoufia University. My expertise covers machine learning, deep learning, computer vision, and natural language processing, and I am proficient in Python, TensorFlow, PyTorch, OpenCV, and Scikit-learn.\n\nI read about your job offer which says [Green Tech’s mission calls me! My climate reporting background merges nicely with Product Management in climate tech. Laura, I’m ready to innovate.]\n\nIt'd be an honor to me to apply in your beloved company.\n\nMy Email: Ahmed.noshy2004@gmail.com\nMy phone number : +201063944671\n\nThank you so much.\n\nCheers,\nAhmed."
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5ff0a065-b1fb-48ac-b796-3b3f0cbe3d48",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "722251b91b8e6ea36af1b1d809ba5865ed7a39ca2db11d9615c7c98672310729"
+  },
+  "id": "44CQOoXmXL2naCrE",
+  "tags": []
+}
