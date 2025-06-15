@@ -1,0 +1,249 @@
+{
+  "name": "Auto Scraper",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3d117326-f48d-4378-bc5e-89914f628e08",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.scrapethissite.com/pages/simple/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        0
+      ],
+      "id": "98306133-eee1-4886-bf9b-eb35ed939944",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "Country Name",
+              "cssSelector": ".country-name",
+              "returnArray": true
+            },
+            {
+              "key": "Country population ",
+              "cssSelector": ".country-population",
+              "returnArray": true
+            },
+            {
+              "key": "Country area",
+              "cssSelector": ".country-area",
+              "returnArray": true
+            },
+            {
+              "key": "Country capitll ",
+              "cssSelector": ".country-capital",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {
+          "cleanUpText": true
+        }
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        480,
+        0
+      ],
+      "id": "133df813-3c1d-44bc-814a-6d4615897ad4",
+      "name": "HTML",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1XTLwnaTGokSbAuExhDbOPNTNVR7GDL46TyR0xrNEqzI",
+          "mode": "list",
+          "cachedResultName": "countries",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XTLwnaTGokSbAuExhDbOPNTNVR7GDL46TyR0xrNEqzI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XTLwnaTGokSbAuExhDbOPNTNVR7GDL46TyR0xrNEqzI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Country Name": "={{ $json['Country Name'] }}",
+            "Country Population": "={{ $json['Country Population'] }}",
+            "Country Area": "={{ $json['Country Area'] }}",
+            "Country Capital": "={{ $json['Country capital'] }}"
+          },
+          "matchingColumns": [
+            "Country Name"
+          ],
+          "schema": [
+            {
+              "id": "Country Name",
+              "displayName": "Country Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country Population",
+              "displayName": "Country Population",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country Area",
+              "displayName": "Country Area",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country Capital",
+              "displayName": "Country Capital",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "bd4ca113-9532-4266-9f5f-87815ce19702",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Sbc8BoBBt9pDjaez",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = [];\nconst inputData = $input.first().json;\nconst countryNames = inputData[\"Country Name\"] || [];\nconst populations = inputData[\"Country population \"] || [];\nconst areas = inputData[\"Country area\"] || [];\nconst capitals = inputData['Country capitll '] || [];\n\nconst maxLength = Math.max(countryNames.length, populations.length, areas.length, capitals.length);\n\nfor (let i = 0; i < maxLength; i++) {\n  items.push({\n    \"Country Name\": countryNames[i] || \"\",\n    \"Country Population\": populations[i] || \"\",\n    \"Country Area\": areas[i] || \"\",\n    \"Country capital\": capitals[i] || \"\"\n  });\n}\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        0
+      ],
+      "id": "7116f1ff-6911-4600-a48f-359ec7b73d08",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "content": "## Auto Scraper\n\"Scrape data from https://www.scrapethis and put it in a sheet to use as a dataset.\" ex: I scraped \"Countries of the World\"\n",
+        "height": 100,
+        "width": 840
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        160,
+        -120
+      ],
+      "typeVersion": 1,
+      "id": "e01ea33d-f135-423a-9925-ffeb1306b9ce",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e0fcc1d7-1c87-46a8-acbc-fcae8c0e8392",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "722251b91b8e6ea36af1b1d809ba5865ed7a39ca2db11d9615c7c98672310729"
+  },
+  "id": "XtsWeqSyvNqXmTkO",
+  "tags": []
+}
