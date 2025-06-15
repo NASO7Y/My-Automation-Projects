@@ -33,6 +33,7 @@ and also **Log to Google Sheet**
 
 This project automates the process of scraping country data (Country Name, Country Population, Country Area, Country Capital) from a website, for example I used [Scrapethis](https://www.scrapethissite.com/pages/simple/) then 
 processing it, and updating a Google Sheet — all triggered manually.
+
 The dataset was scraped and stored in [ScrapedDataset](Auto_Scraper/countries.xlsx)
 
 ### ⚙️ Workflow Overview
@@ -44,3 +45,4 @@ Next, the **HTML step** parses the retrieved web content. This is followed by th
 
 The final step is to Update **Google Sheet**, where the scraped data (up to 250 items) is appended to a Google Sheet for storage and tracking
 
+-------------------------------------------------------------------------------------------
