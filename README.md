@@ -48,3 +48,11 @@ Next, the **HTML step** parses the retrieved web content. This is followed by th
 The final step is to Update **Google Sheet**, where the scraped data (up to 250 items) is appended to a Google Sheet for storage and tracking
 
 -------------------------------------------------------------------------------------------
+
+## (3) 💼 Job Applying Agent
+![Job_Applying_Agent](Job_Applying_Agent/Job_Applying_Agent.png)
+
+
+
+
+
