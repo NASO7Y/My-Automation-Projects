@@ -28,7 +28,18 @@ and also **Log to Google Sheet**
 
 
 -------------------------------------------------------------------------------------------
-## () 📡  Auto Scraper
+## (2) 📡  Auto Scraper
 ![Auto Scraper workflow](Auto_Scraper/Auto_Scraper.png)
 
+This project automates the process of scraping country data (Country Name, Country Population, Country Area, Country Capital) from a website, for example I used [Scrapethis](https://www.scrapethissite.com/pages/simple/) then 
+processing it, and updating a Google Sheet — all triggered manually. The dataset was scraped and stored in [ScrapedDataset](Auto_Scraper/countries.xlsx
+
+### ⚙️ Workflow Overview
+
+The automation begins when the user manually triggers the workflow. The steps are as follows:
+
+First, the **Trigger Event** initiates the process by clicking **"Execute workflow"**. This leads to the **HTTP Request step**, performing a GET request to scrape data from the website
+Next, the **HTML step** parses the retrieved web content. This is followed by the Code step, where the data is processed to extract  [Country Name, Country Population, Country Area, and Country Capital].
+
+The final step is to Update **Google Sheet**, where the scraped data (up to 250 items) is appended to a Google Sheet for storage and tracking
 
