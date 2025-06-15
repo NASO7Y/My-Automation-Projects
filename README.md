@@ -52,7 +52,5 @@ The final step is to Update **Google Sheet**, where the scraped data (up to 250 
 ## (3) 💼 Job Applying Agent
 ![Job_Applying_Agent](Job_Applying_Agent/Job_Applying_Agent.png)
 
-
-
-
+This project automates the process of handling daily job application messages, filtering relevant job offers based on personal qualifications, generating tailored job applications, and sending them via email to the respective companies.
 
