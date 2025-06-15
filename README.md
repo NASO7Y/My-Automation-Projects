@@ -64,8 +64,9 @@ The automation is triggered when a message containing the word “job” in the 
  
 The array goes directly to the **split out** step to change the array into a proper schema that can be fed into the LLM chain. The first LLM model has my own personal, Technical data and filters the jobs based on my data into 2 categories   
 
-`1- useful job offers\> match my skills and qualifications   
-2- not useful job offers\> doesn’t match my skills and qualifications`
+`1- useful job offers\> match my skills and qualifications`   
+
+`2- not useful job offers\> doesn’t match my skills and qualifications`
 
 
 
@@ -73,4 +74,5 @@ After that, it goes to the filter to keep the **useful job offers** and neglect 
 
 when the data that comes out is only useful now, it goes to two LLM Chains to create the job application for the companies, the first one gathers info about the company and generate it,   
 The second one creates the right schema of the Email that’ll be sent to the companies,   
+
 The final step is feeding the data that comes from the final node into the email to send the job applications to the **useful job offer**  
