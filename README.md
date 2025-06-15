@@ -58,7 +58,7 @@ This project automates the process of handling daily job application messages, f
 I subscribed in a Jobs service which gives me a message daily that contains job applications 
 The automation is triggered when a message containing the word “job” in the title arrives. The steps are as follows:
 
-**The first step is executed when the message containing the word “job” in the title arrives**.
+The first step is executed when the message containing the word **“job”** in the title arrives.
 
  After that, I created an **edit field** to clean and split the jobs into arrays, every array is linked to an individual job offer.  
  
@@ -67,7 +67,6 @@ The array goes directly to the **split out** step to change the array into a pro
 `1- useful job offers\> match my skills and qualifications`   
 
 `2- not useful job offers\> doesn’t match my skills and qualifications`
-
 
 
 After that, it goes to the filter to keep the **useful job offers** and neglect the not useful job offers.
