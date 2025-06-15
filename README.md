@@ -62,7 +62,7 @@ The first step is executed when the message containing the word **“job”** in
 
  After that, I created an **edit field** to clean and split the jobs into arrays, every array is linked to an individual job offer.  
  
-The array goes directly to the **split out** step to change the array into a proper schema that can be fed into the LLM chain. The first LLM model has my own personal, Technical data and filters the jobs based on my data into 2 categories   
+The array goes directly to the **split out** step to change the array into a proper schema that can be fed into the LLM chain. The first LLM model has my own personal, Technical data and filters the jobs based on my data into 2 categories:   
 
 `1- useful job offers\> match my skills and qualifications`   
 
