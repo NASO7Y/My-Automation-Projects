@@ -55,7 +55,7 @@ The final step is to Update **Google Sheet**, where the scraped data (up to 250 
 This project automates the process of handling daily job application messages, filtering relevant job offers based on personal qualifications, generating tailored job applications, and sending them via email to the respective companies.
 
 ### ⚙️ Workflow Overview
-I subscribed in a Jobs service which gives me a message daily that contains job applications 
+I subscribed in a Jobs service which gives me a message daily that contains job applications,
 The automation is triggered when a message containing the word “job” in the title arrives. The steps are as follows:
 
 The first step is executed when the message containing the word **“job”** in the title arrives.
