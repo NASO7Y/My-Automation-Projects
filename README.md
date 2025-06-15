@@ -28,4 +28,7 @@ and also **Log to Google Sheet**
 
 
 -------------------------------------------------------------------------------------------
+## () 📡  Auto Scraper
+![Auto Scraper workflow](Auto_Scraper/Auto_Scraper.png)
+
 
