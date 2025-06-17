@@ -71,7 +71,7 @@ The array goes directly to the **split out** step to change the array into a pro
 
 After that, it goes to the filter to keep the **useful job offers** and neglect the not useful job offers.
 
-when the data that comes out is only useful now, it goes to `two LLM Chains` to create the job application for the companies, **the `first one` gathers info about the company and generate it**,   
-**The `second one` creates the right schema of the Email that’ll be sent to the companies**.   
+when the data that comes out is only useful now, it goes to `LLM Chains` to create the job application for the companies, **It gathers info about the company and generate it**,   
+**and also creates the right schema of the Email that’ll be sent to the companies**.   
 
 The final step is feeding the data that comes from the final node into the email to send the job applications to the **useful job offer**  
