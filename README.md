@@ -75,3 +75,7 @@ when the data that comes out is only useful now, it goes to `LLM Chains` to crea
 **and also creates the right schema of the Email that’ll be sent to the companies**.   
 
 The final step is feeding the data that comes from the final node into the email to send the job applications to the **useful job offer**  
+
+here's a testcase of the result:
+![test1](Job_Applying_Agent/test_case.png)
+
