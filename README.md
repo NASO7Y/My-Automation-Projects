@@ -80,6 +80,7 @@ The final step is feeding the data that comes from the final node into the email
 here's an example of the result:
 ![image](https://github.com/user-attachments/assets/0dea7a0f-9ee8-4ba8-895d-453694fb2d3a)
 
+-------------------------------------------------------------------------------------------
 
 
 ## (4) 📊 CV Ranking Agent
