@@ -83,7 +83,8 @@ here's an example of the result:
 
 
 ## (4) 📊 CV Ranking Agent
-![CV_Ranking_Agent](CV_Ranking_Agent/CV_Ranking_Agent.png)
+![CV_Ranking_Agent](Cv_Ranking_Agent/CV_Ranking_Agent.png)
+
 This project automates the process of receiving CVs via Telegram messages, extracting and analyzing candidate information, ranking candidates based on qualifications, and storing the results in a database while providing feedback through Telegram.
 
 ### ⚙️ Workflow Overview
