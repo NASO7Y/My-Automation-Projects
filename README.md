@@ -80,3 +80,30 @@ The final step is feeding the data that comes from the final node into the email
 here's an example of the result:
 ![image](https://github.com/user-attachments/assets/0dea7a0f-9ee8-4ba8-895d-453694fb2d3a)
 
+
+
+## (4) 📊 CV Ranking Agent
+![CV_Ranking_Agent](CV_Ranking_Agent/CV_Ranking_Agent.png)
+This project automates the process of receiving CVs via Telegram messages, extracting and analyzing candidate information, ranking candidates based on qualifications, and storing the results in a database while providing feedback through Telegram.
+
+### ⚙️ Workflow Overview
+I set up a system to receive CV submissions through Telegram messages for efficient candidate screening and ranking.
+The automation is triggered when a message containing a CV file arrives via Telegram. The steps are as follows:
+
+The first step is executed when a **CV file** is received through the Telegram bot.
+After that, the system **downloads the CV file** to prepare it for processing and analysis.
+
+The downloaded file goes to the **Extract from File** step which uses PDF extraction capabilities to convert the CV content into readable text format. The extracted text is then processed through an **Edit Fields** step to clean and structure the candidate data into a proper format.
+
+The structured data is fed into the **CV Agent** which utilizes both **Google Gemini Chat Model** and **Simple Memory** tools to:
+`1- Analyze candidate qualifications and experience`
+`2- Compare against job requirements and company standards`
+`3- Generate a comprehensive ranking score`
+
+After the AI analysis, the system processes the ranking results and stores them in the **Google Sheets** database through the `appendOrUpdate operation`, maintaining a persistent record of all candidates.
+
+The final step sends the **ranking details and feedback** back to the original Telegram conversation, providing instant results to the recruiter or hiring manager.
+
+Here's an example of the workflow in action:
+
+![image](CV_Ranking_Agent/Result.png)
