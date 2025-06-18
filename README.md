@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/f4957829-8fb0-4dd7-8e63-b68a180d451b)
 # My-Automation-Projects
 
 -------------------------------------------------------------------------------------------
@@ -76,6 +77,6 @@ when the data that comes out is only useful now, it goes to `LLM Chains` to crea
 
 The final step is feeding the data that comes from the final node into the email to send the job applications to the **useful job offer**  
 
-here's a testcase of the result:
+here's an example of the result:
 ![test1](Job_Applying_Agent/test_case.png)
 
