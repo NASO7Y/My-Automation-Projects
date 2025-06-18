@@ -97,14 +97,18 @@ After that, the system **downloads the CV file** to prepare it for processing an
 The downloaded file goes to the **Extract from File** step which uses PDF extraction capabilities to convert the CV content into readable text format. The extracted text is then processed through an **Edit Fields** step to clean and structure the candidate data into a proper format.
 
 The structured data is fed into the **CV Agent** which utilizes both **Google Gemini Chat Model** and **Simple Memory** tools to:
+
 `1- Analyze candidate qualifications and experience`
+
 `2- Compare against job requirements and company standards`
+
 `3- Generate a comprehensive ranking score`
 
-After the AI analysis, the system processes the ranking results and stores them in the **Google Sheets** database through the `appendOrUpdate operation`, maintaining a persistent record of all candidates.
+After the AI analysis, the system processes the ranking results and stores them in the **Google Sheets** database through the `appendOrUpdate` operation, maintaining a persistent record of all candidates.
 
 The final step sends the **ranking details and feedback** back to the original Telegram conversation, providing instant results to the recruiter or hiring manager.
 
 Here's an example of the workflow in action:
 
-![image](CV_Ranking_Agent/Result.png)
+![image](Cv_Ranking_Agent/Result.png)
+
