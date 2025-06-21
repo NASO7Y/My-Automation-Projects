@@ -1,0 +1,610 @@
+{
+  "name": "Invoice Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {}
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1VQ-R5TBn7HZKqRZm9nDbCi2H5mA0EdIs",
+          "mode": "list",
+          "cachedResultName": "INVOICE",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1VQ-R5TBn7HZKqRZm9nDbCi2H5mA0EdIs"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3977eee3-782d-4cd7-be07-6a413c6805ef",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "g2GvOTGggcJYUbQT",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        480,
+        0
+      ],
+      "id": "3dc9229c-4a30-4f1e-90ae-c6562ac2c34a",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "db7eab99-6e19-4cdf-ab26-d47113645025",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "g2GvOTGggcJYUbQT",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "=Extract Everything i need you to extract from {{ $json.text }}\n\nReturn: \"N/A\" If you didn't find the attribute ",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Company Name",
+              "description": "The Company name "
+            },
+            {
+              "name": "Company Address",
+              "description": "Company Address"
+            },
+            {
+              "name": "Invoice Number",
+              "description": "the invoice number"
+            },
+            {
+              "name": "Issue Date",
+              "description": "the Issue Date"
+            },
+            {
+              "name": "Data",
+              "description": "Everything inside the Description column only"
+            },
+            {
+              "name": "Quantity ",
+              "description": "Everything inside the Quantity column for every row in the column, but put a separation \"\\n\" for every element "
+            },
+            {
+              "name": "Unit Price",
+              "description": "Everything inside the Total column only for every row"
+            },
+            {
+              "name": "Client Name",
+              "description": "Client name"
+            },
+            {
+              "name": "Client Address",
+              "description": "Client address "
+            },
+            {
+              "name": "Total ",
+              "description": "Everything inside the total column for every row in the column, but put a separation \"\\n\" for every element "
+            },
+            {
+              "name": "Grand Total: ",
+              "description": "The grand total "
+            },
+            {
+              "name": "Additional Notes",
+              "description": "Add the additional notes if any"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        0
+      ],
+      "id": "35ef14a3-b067-4905-8e55-db0142656a08",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        680,
+        180
+      ],
+      "id": "31a319a7-043b-4dec-9970-368e3080a931",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "wJtN1vPOvB0FHB9d",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WzLUbkfqDE9_wXzeMmMgp3yG0AHM99YYh3ZzbvjQHPc",
+          "mode": "list",
+          "cachedResultName": "invoices",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WzLUbkfqDE9_wXzeMmMgp3yG0AHM99YYh3ZzbvjQHPc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "الورقة1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WzLUbkfqDE9_wXzeMmMgp3yG0AHM99YYh3ZzbvjQHPc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Invoice Number ": "={{ $json.output['Company Name'] }}"
+          },
+          "matchingColumns": [
+            "output"
+          ],
+          "schema": [
+            {
+              "id": "Invoice Number ",
+              "displayName": "Invoice Number ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Issue Date ",
+              "displayName": "Issue Date ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Company name ",
+              "displayName": "Company name ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Company address ",
+              "displayName": "Company address ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Client Name",
+              "displayName": "Client Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Client address ",
+              "displayName": "Client address ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Items",
+              "displayName": "Items",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Quantity",
+              "displayName": "Quantity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Unit Price",
+              "displayName": "Unit Price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Total ",
+              "displayName": "Total ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Grand Total",
+              "displayName": "Grand Total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Additional notes ",
+              "displayName": "Additional notes ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1060,
+        -180
+      ],
+      "id": "090646c6-156b-4014-a431-619447dcd1fa",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ITbCc3qoTtnDp4nz",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "Ahmed.Egm2004@gmail.com",
+        "subject": "New Invoice.",
+        "emailType": "text",
+        "message": "=Hi Ahmed,\n\nI’ve received an invoice {{ $json.output['Invoice Number'] }} from {{ $json.output['Company Name'] }}. for services provided to {{ $json.output['Client Name'] }} The details are as follows:\n\nCompany Name: {{ $json.output['Company Name'] }}\nCompany Address: {{ $json.output['Company Address'] }}\nInvoice Number: {{ $json.output['Invoice Number'] }}\nIssue Date: {{ $json.output['Issue Date'] }}\nClient Name: {{ $json.output['Client Name'] }}\nClient Address: {{ $json.output['Client Address'] }}\nGrand Total: {{ $json.output['Grand Total: '] }}\nAdditional Notes: {{ $json.output['Additional Notes'] }}\n\n\nThe Full Details is in the Database.\nPlease let me know how to proceed.\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        160
+      ],
+      "id": "d5e8bab6-988c-4482-9127-6e32ef7f16d6",
+      "name": "Gmail",
+      "webhookId": "58125b80-1b0d-42a8-86cf-544c2d298bc8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TucjfKaMzr1uyQz6",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Invoice Handler\n**Get the data from Google drive the moment it's uploaded and extract the important information, store it in the database, and Send a copy of the most important part to the manager**",
+        "height": 100,
+        "width": 760
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -140
+      ],
+      "id": "c33e86de-cd61-4c2e-8f99-bcd4043ad8ff",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger": [
+      {
+        "json": {
+          "parents": [
+            "1VQ-R5TBn7HZKqRZm9nDbCi2H5mA0EdIs"
+          ],
+          "lastModifyingUser": {
+            "displayName": "Ahmed Noshy",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "06904319953442356635",
+            "emailAddress": "ahmed.noshy2004@gmail.com",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKT1HWllIq89N6vZ1lTwfi1UJq7Rnw1gmGzv_KB677YqeeB8D6H=s64"
+          },
+          "owners": [
+            {
+              "displayName": "Ahmed Noshy",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "06904319953442356635",
+              "emailAddress": "ahmed.noshy2004@gmail.com",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKT1HWllIq89N6vZ1lTwfi1UJq7Rnw1gmGzv_KB677YqeeB8D6H=s64"
+            }
+          ],
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "06904319953442356635",
+              "type": "user",
+              "emailAddress": "ahmed.noshy2004@gmail.com",
+              "role": "owner",
+              "displayName": "Ahmed Noshy",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKT1HWllIq89N6vZ1lTwfi1UJq7Rnw1gmGzv_KB677YqeeB8D6H=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": true,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": true,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": true,
+            "canMoveItemOutOfDrive": true,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": true,
+            "canUntrash": true
+          },
+          "permissionIds": [
+            "06904319953442356635"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "kind": "drive#file",
+          "id": "14BAqgcCkNGj0VoFba1ScysR1aaLz3ZrE",
+          "name": "Invoices.pdf",
+          "mimeType": "application/pdf",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "version": "3",
+          "webContentLink": "https://drive.google.com/uc?id=14BAqgcCkNGj0VoFba1ScysR1aaLz3ZrE&export=download",
+          "webViewLink": "https://drive.google.com/file/d/14BAqgcCkNGj0VoFba1ScysR1aaLz3ZrE/view?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/pdf",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPnhFNkpGZfWrCZWU-6I4857_sYC0kjmw1GspuwMSUB79R19ADg5PSL1puyISBzM6QschqnYjtDnn7pl6ck3swRA_PcLXL0hvHSL619G0ypUw=s220",
+          "thumbnailVersion": "1",
+          "viewedByMe": true,
+          "viewedByMeTime": "2025-06-20T15:50:29.773Z",
+          "createdTime": "2025-06-20T15:50:29.773Z",
+          "modifiedTime": "2025-06-20T12:28:21.000Z",
+          "modifiedByMeTime": "2025-06-20T12:28:21.000Z",
+          "modifiedByMe": true,
+          "shared": false,
+          "ownedByMe": true,
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "originalFilename": "Invoices.pdf",
+          "fullFileExtension": "pdf",
+          "fileExtension": "pdf",
+          "md5Checksum": "781a1f8ae81a7b318fc2719131a573f7",
+          "sha1Checksum": "3c19209b1b18fa077ddf344bf6de9c9695e5601f",
+          "sha256Checksum": "c09f41199b34058463a83d309dd4abbb851aa9fe2c04ed295df53558bcfe125a",
+          "size": "12748",
+          "quotaBytesUsed": "12748",
+          "headRevisionId": "0B1ws74Hzf4A8U0VZVjhWTWtHbDdCUEhxRGd2QmpXVFNwMWJjPQ",
+          "isAppAuthorized": false,
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ],
+    "Extract from File": [
+      {
+        "json": {
+          "numpages": 1,
+          "numrender": 1,
+          "info": {
+            "PDFFormatVersion": "1.4",
+            "Language": null,
+            "EncryptFilterName": null,
+            "IsLinearized": false,
+            "IsAcroFormPresent": false,
+            "IsXFAPresent": false,
+            "IsCollectionPresent": false,
+            "IsSignaturesPresent": false,
+            "Title": "Markdown To PDF",
+            "Creator": "wkhtmltopdf 0.12.4",
+            "Producer": "Qt 4.8.7",
+            "CreationDate": "D:20250620122821Z"
+          },
+          "text": "INVOICEINVOICE\nCompany Name:Company Name: AI Solutions Inc.\nCompany Address:Company Address: 123 Innovation Drive, Tech Valley, CA 94016\nInvoice Number:Invoice Number: 834729\nIssue Date:Issue Date: June 20, 2025\nDue Date:Due Date: July 20, 2025\nBill To:Bill To:\nClient Name:Client Name: Visionary Tech Ltd.\nClient Address:Client Address: 789 Future Blvd, Silicon City, NY 10011\nItemized ChargesItemized Charges\nDescriptionDescription QuantityQuantity Unit PriceUnit Price TotalTotal\nCustom AI Model Development 1 $2,500.00 $2,500.00\nData Preprocessing & Cleaning 15 hrs $60.00 $900.00\nDeployment to Cloud Platform 1 $750.00 $750.00\nModel Performance Evaluation 1 $400.00 $400.00\nPost-deployment Support (Monthly) 1 $300.00 $300.00\nGrand Total: $4,850.00Grand Total: $4,850.00\nAdditional NotesAdditional Notes\nPlease make payment within 30 days via bank transfer to Bank of Innovation - Account No: 1234567890Bank of Innovation - Account No: 1234567890\nThank you for your business!",
+          "version": "2.16.105"
+        }
+      }
+    ],
+    "Information Extractor": [
+      {
+        "json": {
+          "output": {
+            "Company Name": "AI Solutions Inc.",
+            "Company Address": "123 Innovation Drive, Tech Valley, CA 94016",
+            "Invoice Number": "834729",
+            "Issue Date": "June 20, 2025",
+            "Data": "Custom AI Model Development\nData Preprocessing & Cleaning\nDeployment to Cloud Platform\nModel Performance Evaluation\nPost-deployment Support (Monthly)",
+            "Quantity ": "1\n15 hrs\n1\n1\n1",
+            "Unit Price": "$2,500.00\n$60.00\n$750.00\n$400.00\n$300.00",
+            "Client Name": "Visionary Tech Ltd.",
+            "Client Address": "789 Future Blvd, Silicon City, NY 10011",
+            "Total ": "$2,500.00\n$900.00\n$750.00\n$400.00\n$300.00",
+            "Grand Total: ": "$4,850.00",
+            "Additional Notes": "Please make payment within 30 days via bank transfer to Bank of Innovation - Account No: 1234567890Bank of Innovation - Account No: 1234567890\nThank you for your business!"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f24ba07f-3a72-41f1-ba83-1c8a6d1a619b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0735771e76782f3bba9548f6a314c0b205d4eaf3ed8a9993a114a9ddd7f603e8"
+  },
+  "id": "JIJ3BK6GLKzpMymJ",
+  "tags": []
+}
