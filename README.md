@@ -113,3 +113,33 @@ Here's an example of the workflow in action:
 
 ![image](Cv_Ranking_Agent/Result.png)
 
+-------------------------------------------------------------------------------------------
+
+## (5) 🖨 Invoice Handler
+[Invoice_handler](Invoice_Handler/Invoice_Handler.png)
+
+This project automates the process of handling  invoices and bills when uploaded to Google Drive, extracting all of it's information, storing them in a database, and sending a summary to the manager.
+
+### ⚙️ Workflow Overview
+
+The automation is triggered when a new file is uploaded to a specific folder i created in my Google Drive. The steps are as follows:
+
+The process begins when a new file is uploaded `(fileCreated event)`.
+
+After that, the `Google Drive Download` step downloads the uploaded file.
+
+The file is then processed by the `Extract from File` step to extract data from the PDF.
+
+The extracted data goes to the `Information Extractor` step, which uses the `Google Gemini Model` to identify and extract critical invoice information.
+
+The extracted information is appended to `Google Sheets`.
+
+The final step **sends a message** with the ( most important ) details to the manager via Gmail.
+
+ You Can see the invoice i used here : [Invoice](Invoice_Handler/Invoice.pdf)
+
+ You can also the the Database which the data stored in here : [Database](Invoice_Handler/Database.xlsx)
+
+ This an example of the Automation process of the Most important details that delivered in the Manager's Email : 
+
+[Sample](Invoice_Handler/Sample.png)
