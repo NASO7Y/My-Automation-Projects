@@ -136,7 +136,7 @@ The extracted information is appended to `Google Sheets`.
 
 The final step **sends a message** with the ( most important ) details to the manager via Gmail.
 
- You Can see the invoice i used here : ![Invoice](Invoice_Handler/Invoice.pdf)
+ You Can see the invoice i used here : [Invoice](Invoice_Handler/Invoice.pdf)
 
  You can also the the Database which the data stored in here : [Database](Invoice_Handler/Database.xlsx)
 
