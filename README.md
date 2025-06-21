@@ -127,12 +127,8 @@ The automation is triggered when a new file is uploaded to a specific folder i c
 The process begins when a new file is uploaded `(fileCreated event)`.
 
 After that, the `Google Drive Download` step downloads the uploaded file.
-
 The file is then processed by the `Extract from File` step to extract data from the PDF.
-
-The extracted data goes to the `Information Extractor` step, which uses the `Google Gemini Model` to identify and extract critical invoice information.
-
-The extracted information is appended to `Google Sheets`.
+The extracted data goes to the `Information Extractor` step, which uses the `Google Gemini Model` to identify and extract critical invoice information, The extracted information is appended to `Google Sheets`.
 
 The final step **sends a message** with the ( most important ) details to the manager via Gmail.
 
