@@ -116,7 +116,7 @@ Here's an example of the workflow in action:
 -------------------------------------------------------------------------------------------
 
 ## (5) 🖨 Invoice Handler
-[Invoice_handler](Invoice_Handler/Invoice_Handler.png)
+![Invoice_handler](Invoice_Handler/Invoice_Handler.png)
 
 This project automates the process of handling  invoices and bills when uploaded to Google Drive, extracting all of it's information, storing them in a database, and sending a summary to the manager.
 
@@ -136,10 +136,10 @@ The extracted information is appended to `Google Sheets`.
 
 The final step **sends a message** with the ( most important ) details to the manager via Gmail.
 
- You Can see the invoice i used here : [Invoice](Invoice_Handler/Invoice.pdf)
+ You Can see the invoice i used here : ![Invoice](Invoice_Handler/Invoice.pdf)
 
  You can also the the Database which the data stored in here : [Database](Invoice_Handler/Database.xlsx)
 
  This an example of the Automation process of the Most important details that delivered in the Manager's Email : 
 
-[Sample](Invoice_Handler/Sample.png)
+![Sample](Invoice_Handler/Sample.png)
