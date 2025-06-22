@@ -163,7 +163,7 @@ Subsequently, the Post Generating phase utilizes an AI model to craft polished a
 
 Following that, the Image Generating step takes the **Image Prompt** and employs the cutting-edge "Flux" model [Here](https://huggingface.co/black-forest-labs/FLUX.1-schnell?inference_api=true&inference_provider=hf-inference&language=js) to produce visually appealing images that complement the posts.
 
-The final step involves feeding the refined content and images into the LinkedIn module, which seamlessly creates and publishes the posts to your profile.
+The final step involves feeding the refined content and images into the LinkedIn module, which smoothely creates and publishes the posts to your profile.
 
 You Can see th result : 
 
