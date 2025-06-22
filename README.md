@@ -142,7 +142,7 @@ The final step **sends a message** with the ( most important ) details to the ma
 
 -------------------------------------------------------------------------------------------
 
-(6) 🔗 LinkedIn Content Engine
+## (6) 🔗 LinkedIn Content Engine
 ![Linkedin](LinkedIn_Content_Engine/LinkedIn_Content_Engine.png)
 
 
