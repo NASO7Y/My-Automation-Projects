@@ -13,7 +13,7 @@ This project automates the process of reading user data from a Google Sheet, gen
 The automation is executed when the user manually triggers the workflow. The steps are as follows:
 
 First i have the **Trigger Event** which means that The workflow starts when clicking **"Execute workflow"**.
-this step takes me to **Read Google Sheet** to Read the data from my**Google Sheet**.
+this step takes me to **Read Google Sheet** to Read the data from my **Google Sheet**.
 After that it goes to **Generate Response (LLM)** step when The data is passed to a **Basic LLM Chain** using the **Google Gemini Chat Model** to generate a relevant, human-like reply.
 
 which takes me to the **Wait Delay** 
@@ -146,21 +146,22 @@ The final step **sends a message** with the ( most important ) details to the ma
 ![Linkedin](LinkedIn_Content_Engine/LinkedIn_Content_Engine.png)
 
 
-This project automates the creation and posting of LinkedIn content, leveraging advanced AI to generate engaging posts and high-quality images based on trending topics, streamlining your social media presence.
+This project uses advanced AI to automate LinkedIn content creation and posting, generating engaging posts and high-quality images based on trending topics, enhancing my social media presence efficiently.
 
-⚙️ Workflow Overview
+### ⚙️ Workflow Overview
 
-The automation is initiated by a Schedule Trigger, ensuring timely updates. The process unfolds as follows:
+The automation is initiated by a Schedule Trigger, Exactly at 6:30 P.m ( the best timing for Linkedin Reach), ensuring timely updates. The process unfolds as follows:
 
-The process begins when the Schedule Trigger activates at predefined intervals.
+The process begins when the Schedule Trigger activates at predefined intervals as i said above.
 
-Next, the Topic Search module, powered by an AI model, identifies the latest trending topics to keep content relevant and .
+Next, the **Topic Search** module, powered by an AI model ( `DeepSeek R1` ) , its tasks is to  **identifies the latest trending topics**, Also **generates a prompt for the Image Generation Node** to keep content relevant and engaging.
 
-The output is then routed to the Edit Fields step, where users can manually refine and personalize the generated content for maximum impact.
+The output is then routed to the **`Edit Fields`** step, Which splits the Output from the Topic search to Two branches  `1- Trending topic`,    `2- Image prompt`
 
-Subsequently, the Post Generating phase utilizes an AI model to craft polished and professional post content tailored to the audience.
 
-Following that, the Image Generating step employs the cutting-edge "Flux" model [Here](https://huggingface.co/black-forest-labs/FLUX.1-schnell?inference_api=true&inference_provider=hf-inference&language=js) to produce visually appealing images that complement the posts.
+Subsequently, the Post Generating phase utilizes an AI model to craft polished and professional post content tailored to the audience based on the **Trending Topic**.
+
+Following that, the Image Generating step takes the **Image Prompt** and employs the cutting-edge "Flux" model [Here](https://huggingface.co/black-forest-labs/FLUX.1-schnell?inference_api=true&inference_provider=hf-inference&language=js) to produce visually appealing images that complement the posts.
 
 The final step involves feeding the refined content and images into the LinkedIn module, which seamlessly creates and publishes the posts to your profile.
 
