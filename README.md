@@ -139,3 +139,31 @@ The final step **sends a message** with the ( most important ) details to the ma
  This an example of the Automation process of the Most important details that delivered in the Manager's Email : 
 
 ![Sample](Invoice_Handler/Sample.png)
+
+-------------------------------------------------------------------------------------------
+
+(6) 🔗 LinkedIn Content Engine
+![Linkedin](LinkedIn_Content_Engine/LinkedIn_Content_Engine.png)
+
+
+This project automates the creation and posting of LinkedIn content, leveraging advanced AI to generate engaging posts and high-quality images based on trending topics, streamlining your social media presence.
+
+⚙️ Workflow Overview
+
+The automation is initiated by a Schedule Trigger, ensuring timely updates. The process unfolds as follows:
+
+The process begins when the Schedule Trigger activates at predefined intervals.
+
+Next, the Topic Search module, powered by an AI model, identifies the latest trending topics to keep content relevant.
+
+The output is then routed to the Edit Fields step, where users can manually refine and personalize the generated content for maximum impact.
+
+Subsequently, the Post Generating phase utilizes an AI model to craft polished and professional post content tailored to the audience.
+
+Following that, the Image Generating step employs the cutting-edge "Flux" model (https://router.huggingface...) to produce visually appealing images that complement the posts.
+
+The final step involves feeding the refined content and images into the LinkedIn module, which seamlessly creates and publishes the posts to your profile.
+
+You Can see th result : 
+
+![3](LinkedIn_Content_Engine/3.png)
