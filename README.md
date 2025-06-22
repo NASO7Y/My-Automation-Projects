@@ -154,13 +154,13 @@ The automation is initiated by a Schedule Trigger, ensuring timely updates. The 
 
 The process begins when the Schedule Trigger activates at predefined intervals.
 
-Next, the Topic Search module, powered by an AI model, identifies the latest trending topics to keep content relevant.
+Next, the Topic Search module, powered by an AI model, identifies the latest trending topics to keep content relevant and .
 
 The output is then routed to the Edit Fields step, where users can manually refine and personalize the generated content for maximum impact.
 
 Subsequently, the Post Generating phase utilizes an AI model to craft polished and professional post content tailored to the audience.
 
-Following that, the Image Generating step employs the cutting-edge "Flux" model (https://router.huggingface...) to produce visually appealing images that complement the posts.
+Following that, the Image Generating step employs the cutting-edge "Flux" model [Here](https://huggingface.co/black-forest-labs/FLUX.1-schnell?inference_api=true&inference_provider=hf-inference&language=js) to produce visually appealing images that complement the posts.
 
 The final step involves feeding the refined content and images into the LinkedIn module, which seamlessly creates and publishes the posts to your profile.
 
