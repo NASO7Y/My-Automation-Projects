@@ -176,7 +176,7 @@ You Can see th result :
 ## (4) 📊 Analytics Automation Engine
 ### this is my first project with make.com and probably the last 
 
-![Analytics_Automation_Engine](Analytics_Automation_Engine/make.com.png)
+![Analytics_Automation_Engine](Analytics Automation Engine/make.com.png)
 
 This project automates the collection and processing of analytics data, streamlining the workflow to enhance data-driven decision making.
 
