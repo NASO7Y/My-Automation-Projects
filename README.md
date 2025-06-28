@@ -168,3 +168,27 @@ The final step involves feeding the refined content and images into the LinkedIn
 You Can see th result : 
 
 ![3](LinkedIn_Content_Engine/3.png)
+
+
+
+-------------------------------------------------------------------------------------------
+
+## (4) 📊 Analytics Automation Engine
+### this is my first project with make.com and probably the last 
+
+![Analytics_Automation_Engine](Analytics_Automation_Engine/make.com.png)
+
+This project automates the collection and processing of analytics data, streamlining the workflow to enhance data-driven decision making.
+
+### ⚙️ Workflow Overview
+
+The automation is triggered by incoming data. The steps are as follows:
+
+The process begins when the **Webhooks** module receives data via a custom webhook.
+
+Next, the **Tools** module, including a sleep function, processes the incoming data to prepare it for analysis.
+
+The processed data is then sent to the **Google Sheets** module, where a new row is added to store the analytics.
+
+Finally, the **Break** step pauses the workflow to allow for data review or further processing.
+
