@@ -24,7 +24,7 @@ what is that ? it's A 30-second delay (`Wait`), the purpose i did it is to intro
    The AI-generated response is sent via **Gmail** from my account `ahmed.noshy2004@gmail.com` to the intended recipient.
 
 and also **Log to Google Sheet**  
-   A copy of the response is also appended to another Google Sheet (`Google Sheets1`) for logging and tracking purposes.
+ A copy of the response is also appended to another Google Sheet (`Google Sheets1`) for logging and tracking purposes.
 
 
 -------------------------------------------------------------------------------------------
