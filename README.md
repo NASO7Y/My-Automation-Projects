@@ -65,9 +65,9 @@ The first step is executed when the message containing the word **“job”** in
  
 The array goes directly to the **split out** step to change the array into a proper schema that can be fed into the LLM chain. The first LLM model has my own personal, Technical data and filters the jobs based on my data into 2 categories:   
 
-`1- useful job offers \> match my skills and qualifications`   
+`1- useful job offers > match my skills and qualifications`   
 
-`2- not useful job offers \> doesn’t match my skills and qualifications`
+`2- not useful job offers > doesn’t match my skills and qualifications`
 
 
 After that, it goes to the filter to keep the **useful job offers** and neglect the not useful job offers.
