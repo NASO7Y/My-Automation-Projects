@@ -156,7 +156,7 @@ The process begins when the Schedule Trigger activates at predefined intervals a
 
 Next, the **Topic Search** module, powered by an AI model ( `DeepSeek R1` ) , its tasks is to  **identifies the latest trending topics**, Also **generates a prompt for the Image Generation Node** to keep content relevant and engaging.
 
-The output is then routed to the **`Edit Fields`** step, Which splits the Output from the Topic search to Two branches  `1- Trending topic`,    `2- Image prompt`
+The output is then routed to the **`Edit Fields`** step, Which splits the Output from the Topic search to Two branches  `1- Trending topic`,  `2- Image prompt`
 
 
 Subsequently, the Post Generating phase utilizes an AI model to craft polished and professional post content tailored to the audience based on the **Trending Topic**.
