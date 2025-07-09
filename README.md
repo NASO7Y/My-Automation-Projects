@@ -7,7 +7,7 @@
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
 This project automates the process of reading user data from a Google Sheet, generating an AI-based response using a large language model (LLM), and sending that response via Gmail — while also logging the reply back to a Google Sheet.
 
-### ⚙️ Workflow Overview
+### ⚙️ Workflow Overviewو
 
 The automation is executed when the user manually triggers the workflow. The steps are as follows:
 
@@ -208,8 +208,8 @@ Next, the **PreProcessing** and **Settings** modules prepare the input data for 
 The data is then merged and routed through the **CheckCommand** node, which evaluates the command and branches the workflow accordingly.
 
 - **Chat Mode ahd this is the default**: If no specific command is sent, the bot enters chat mode using OpenAi , it's exactly Like chatGPT but in your chat ✨, completing the chat and sending a text reply.
-- **Welcome Message**: For the `/start` command, a welcome message is sent.
-- **Create an Image**: For the `/image-request` command, an image is generated and sent.
+- **Welcome Message**: For the `/start` command for new users, a welcome message is sent.
+- **Create an Image**: For the `/image-request` command, an image is generated and sent for personal use.
 - **Error Fallback**: For unsupported commands, an error message is sent.
 
 The workflow includes a **Send Typing Action** to indicate processing and ensures smooth interaction with the user.
