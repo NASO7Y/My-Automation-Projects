@@ -192,7 +192,7 @@ Finally, the **Break** step pauses the workflow to allow for data review or furt
 
 -------------------------------------------------------------------------------------------
 
-## (8) 🔗 Telegram Assistant
+## (8) 🤖 Telegram Assistant
 ![Telegram](Telegram_Assistant/telegramBot.png)
 
 This project implements a Telegram bot with a structured workflow to handle user interactions, providing chat responses, welcome messages, image creation, and error handling based on incoming commands.
@@ -215,4 +215,4 @@ The data is then merged and routed through the **CheckCommand** node, which eval
 The workflow includes a **Send Typing Action** to indicate processing and ensures smooth interaction with the user.
 
 You can see the result:  
-![Workflow](Telegram_Bot_Workflow_Engine.png)
+![Workflow](Telegram_Assistant/test.png)
