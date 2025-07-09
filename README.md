@@ -214,5 +214,5 @@ The data is then merged and routed through the **CheckCommand** node, which eval
 
 The workflow includes a **Send Typing Action** to indicate processing and ensures smooth interaction with the user.
 
-You can see the result:  
+You can see the result:   
 ![Workflow](Telegram_Assistant/test.png)
