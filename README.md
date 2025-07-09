@@ -190,3 +190,29 @@ The processed data is then sent to the **Google Sheets** module, where a new row
 
 Finally, the **Break** step pauses the workflow to allow for data review or further processing.
 
+-------------------------------------------------------------------------------------------
+
+## (8) 🔗 Telegram Assistant
+![Telegram](Telegram_Assistant/telegramBot.png)
+
+This project implements a Telegram bot with a structured workflow to handle user interactions, providing chat responses, welcome messages, image creation, and error handling based on incoming commands.
+
+### ⚙️ Workflow Overview
+
+The automation is initiated by a Telegram Trigger, responding to user updates in real-time. The process unfolds as follows:
+
+The process begins when the Telegram Trigger receives user updates.
+
+Next, the **PreProcessing** and **Settings** modules prepare the input data for further handling.
+
+The data is then merged and routed through the **CheckCommand** node, which evaluates the command and branches the workflow accordingly.
+
+- **Chat Mode (default)**: If no specific command is provided, the bot enters chat mode, completing the chat and sending a text reply.
+- **Welcome Message**: For the `/start` command, a welcome message is sent.
+- **Create an Image**: For the `/image-request` command, an image is generated and sent.
+- **Error Fallback**: For unsupported commands, an error message is sent.
+
+The workflow includes a **Send Typing Action** to indicate processing and ensures smooth interaction with the user.
+
+You can see the result:  
+![Workflow](Telegram_Bot_Workflow_Engine.png)
