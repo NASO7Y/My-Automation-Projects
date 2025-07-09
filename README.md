@@ -207,7 +207,7 @@ Next, the **PreProcessing** and **Settings** modules prepare the input data for 
 
 The data is then merged and routed through the **CheckCommand** node, which evaluates the command and branches the workflow accordingly.
 
-- **Chat Mode (default)**: If no specific command is provided, the bot enters chat mode, completing the chat and sending a text reply.
+- **Chat Mode ahd this is the default**: If no specific command is sent, the bot enters chat mode using OpenAi , it's exactly Like chatGPT but in your chat ✨, completing the chat and sending a text reply.
 - **Welcome Message**: For the `/start` command, a welcome message is sent.
 - **Create an Image**: For the `/image-request` command, an image is generated and sent.
 - **Error Fallback**: For unsupported commands, an error message is sent.
