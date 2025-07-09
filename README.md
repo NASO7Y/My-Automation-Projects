@@ -209,7 +209,7 @@ The data is then merged and routed through the **CheckCommand** node, which eval
 
 - **Chat Mode ahd this is the default**: If no specific command is sent, the bot enters chat mode using OpenAi , it's exactly Like chatGPT but in your chat ✨, completing the chat and sending a text reply.
 - **Welcome Message**: For the `/start` command for new users, a welcome message is sent.
-- **Create an Image**: For the `/image-request` command, an image is generated and sent for personal use.
+- **Create an Image**: For the `/image-request` command, an image is generated and sent for personal use. 
 - **Error Fallback**: For unsupported commands, an error message is sent.
 
 The workflow includes a **Send Typing Action** to indicate processing and ensures smooth interaction with the user.
