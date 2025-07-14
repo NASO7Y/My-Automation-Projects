@@ -241,8 +241,11 @@ With the text neatly segmented and embedded, the workflow passes the processed d
 
 Next, the newly embedded vectors are stored in **Pinecone Vector Store**. This system functions like an ultra-efficient filing cabinet designed for vector data. Instead of organizing data by keywords or titles, Pinecone groups them by "meaning" or "semantic similarity." For example, two documents about health might be stored near each other even if they don’t share exact words.
 
-Finally, the **Default Data Loader** module `processes all the stored vector` entries. This step ensures that the data is ready to be queried or used in downstream tasks, like powering a chatbot, search bar, or any AI-driven interface.
+Finally, the **Default Data Loader** module `processes all the stored vector` entries. This step ensures that the data is ready to be queried or used in downstream ( Big ) tasks, like  : 
+-powering a chatbot, 
+-search bar, or
+-any AI-driven interface.
 
-This entire workflow transforms unstructured text into rich, searchable knowledge—efficiently and intelligently—using modern techniques like embeddings and vector databases.
+This entire workflow transforms unstructured text into rich, **searchable** knowledge—efficiently and intelligently—using modern techniques like embeddings and vector databases.
 
 I hope you understood the concept by now because it's very useful in managing large projects.
