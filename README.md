@@ -1,5 +1,5 @@
 # My-Automation-Projects
-> Every word here is written by me, so forgive me for any mistake. 
+> Every word here is written by me, so forgive me for any mistake.  
 -------------------------------------------------------------------------------------------   
 ## (1) 📩 Sheet Auto Responder
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
