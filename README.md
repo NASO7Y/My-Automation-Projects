@@ -216,3 +216,9 @@ The workflow includes a **Send Typing Action** to indicate processing and ensure
 
 You can see the result:   
 ![Workflow](Telegram_Assistant/test.png)
+
+
+-------------------------------------------------------------------------------------------
+
+## (9) 🤖 Real Data to Vector Data ( With Explaination) 
+![Row](Row_To_Vector_Data/Storing_In_Pinecone.png)
