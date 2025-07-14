@@ -6,7 +6,7 @@
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
 This project automates the process of reading user data from a Google Sheet, generating an AI-based response using a large language model (LLM), and sending that response via Gmail — while also logging the reply back to a Google Sheet.
 
-### ⚙️ Workflow Overviewو
+### ⚙️ Workflow Overview
 
 The automation is executed when the user manually triggers the workflow. The steps are as follows:
 
