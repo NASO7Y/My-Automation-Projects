@@ -219,7 +219,7 @@ You can see the result:
 
 -------------------------------------------------------------------------------------------
 
-## (9) 🤖 Real Data to Vector Data ( With Explaination) 
+## (9) 🤖 Real Data to Vector Data (With Explaination) 
 ![Row](Row_To_Vector_Data/Storing_In_Pinecone.png)
 
 
