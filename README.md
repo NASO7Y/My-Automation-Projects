@@ -222,9 +222,6 @@ You can see the result:
 ## (9) 🤖 Real Data to Vector Data (With Explaination) 
 ![Row](Row_To_Vector_Data/Storing_In_Pinecone.png)
 
-
-# Project Readme: Data Processing Workflow
-
 This project automates the processing and storage of data using a structured workflow, leveraging vector storage for enhanced data management.
 
 ## ⚙️ Workflow Overview
