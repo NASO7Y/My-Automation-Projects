@@ -226,7 +226,7 @@ This project automates the processing and storage of data using a structured wor
 
 ## ⚙️ Workflow Overview
 
-This automated workflow kicks off when the user clicks **"Test workflow"**. That action triggers a well-created pipeline that transforms, prepares, and stores your data in a way optimized for semantic search and retrieval ( RAG ).
+This automated workflow kicks off when the user clicks **"Test workflow"**. That action triggers a well-created pipeline that transforms, prepares, and stores your data in a way **optimized for semantic search and retrieval ( RAG ).**
 
 The process begins with reading raw data from **Google Sheets**. This initial data source feeds into the next crucial step: the **Embeddings Cohere** module.
 
