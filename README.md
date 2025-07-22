@@ -13,7 +13,7 @@
 - [LinkedIn Content Engine](#6-linkedin-content-engine)
 - [Analytics Automation Engine](#7-analytics-automation-engine)
 - [Telegram Assistant](#8-telegram-assistant)
-- [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)
+- [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)  -> SO USEFUL FOR RAG-BASED APPLICATIONS 
 - [Talk To Notion](#10-talk-to-notion)
  
   
