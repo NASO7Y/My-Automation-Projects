@@ -1,9 +1,9 @@
-# My-Automation-Projects
+# My-Automation-Projects 
 > Every word here is written by me, so forgive me for any mistake.
 
 ## Projects
-- [Sheet Auto Responder](#sheet-auto-responder)
-- [Auto Scraper](#auto-scraper)
+- [Sheet Auto Responder](#1-sheet-auto-responder)
+- [Auto Scraper](#2-auto-scraper)
 - [Job Applying Agent](#3-job-applying-agent)
 - [CV Ranking Agent](#4-cv-ranking-agent)
 - [Invoice Handler](#5-invoice-handler)
@@ -11,11 +11,10 @@
 - [Analytics Automation Engine](#7-analytics-automation-engine)
 - [Telegram Assistant](#8-telegram-assistant)
 - [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)
-
-
+  
 -------------------------------------------------------------------------------------------   
 
-## Sheet Auto Responder
+## (1) Sheet Auto Responder
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
 This project automates the process of reading user data from a Google Sheet, generating an AI-based response using a large language model (LLM), and sending that response via Gmail — while also logging the reply back to a Google Sheet.
  
@@ -40,7 +39,7 @@ and also **Log to Google Sheet**
 
 
 -------------------------------------------------------------------------------------------
-## Auto Scraper
+## (2) Auto Scraper
 ![Auto Scraper workflow](Auto_Scraper/Auto_Scraper.png)
 
 This project automates the process of scraping country data (Country Name, Country Population, Country Area, Country Capital) from a website, for example I used [Scrapethis](https://www.scrapethissite.com/pages/simple/) then 
