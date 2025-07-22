@@ -93,7 +93,7 @@ here's an example of the result:
 -------------------------------------------------------------------------------------------
 
 
-## (4) 📊 CV Ranking Agent
+## (4) CV Ranking Agent
 ![CV_Ranking_Agent](Cv_Ranking_Agent/CV_Ranking_Agent.png)
 
 This project automates the process of receiving CVs via Telegram messages, extracting and analyzing candidate information, ranking candidates based on qualifications, and storing the results in a database while providing feedback through Telegram.
@@ -125,7 +125,7 @@ Here's an example of the workflow in action:
 
 -------------------------------------------------------------------------------------------
 
-## (5) 🖨 Invoice Handler
+## (5) Invoice Handler
 ![Invoice_handler](Invoice_Handler/Invoice_Handler.png)
 
 This project automates the process of handling  invoices and bills when uploaded to Google Drive, extracting all of it's information, storing them in a database, and sending a summary to the manager.
@@ -152,7 +152,7 @@ The final step **sends a message** with the ( most important ) details to the ma
 
 -------------------------------------------------------------------------------------------
 
-## (6) 🔗 LinkedIn Content Engine
+## (6) LinkedIn Content Engine
 ![Linkedin](LinkedIn_Content_Engine/LinkedIn_Content_Engine.png)
 
 
@@ -182,7 +182,7 @@ You Can see th result :
 
 -------------------------------------------------------------------------------------------
 
-## (7) 📊 Analytics Automation Engine
+## (7) Analytics Automation Engine
 ### this is my first project with make.com and probably the last 
 
 ![Analytics_Automation_Engine](Analytics_Automation_Engine/make.com.png)
@@ -203,7 +203,7 @@ Finally, the **Break** step pauses the workflow to allow for data review or furt
 
 -------------------------------------------------------------------------------------------
 
-## (8) 🤖 Telegram Assistant
+## (8) Telegram Assistant
 ![Telegram](Telegram_Assistant/telegramBot.png)
 
 This project implements a Telegram bot with a structured workflow to handle user interactions, providing chat responses, welcome messages, image creation, and error handling based on incoming commands.
@@ -231,7 +231,7 @@ You can see the result:
 
 -------------------------------------------------------------------------------------------
 
-## (9) 🤖 Real Data to Vector Data (With Explaination) 
+## (9) Real Data to Vector Data (With Explaination) 
 ![Row](Row_To_Vector_Data/Storing_In_Pinecone.png)
 
 This project automates the processing and storage of data using a structured workflow, leveraging vector storage for enhanced data management.
