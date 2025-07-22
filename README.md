@@ -289,5 +289,6 @@ The transcribed text is then passed to a second **OpenAI** node (using the `gpt-
 Finally, the **Notion** node creates a new page in Notion (using the provided page ID) with a heading "Summary" and the generated summary content appended below it.
 
 You can see Sample of a result Here :   
+
 ![Workflow](Talk_To_Notion/notion_sample.png)
 
