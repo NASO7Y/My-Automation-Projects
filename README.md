@@ -256,8 +256,36 @@ Next, the newly embedded vectors are stored in **Pinecone Vector Store**. This s
 Finally, the **Default Data Loader** module `processes all the stored vector` entries. This step ensures that the data is ready to be queried or used in downstream ( Big ) tasks, like  : 
 -powering a chatbot, 
 -search bar, or
--any AI-driven interface.
 
-This entire workflow transforms unstructured text into rich, **searchable** knowledge—efficiently and intelligently—using modern techniques like embeddings and vector databases.
+-------------------------------------------------------------------------------------------
 
-I hope you understood the concept by now because it's very useful in managing large projects.
+## (10)  Talk To Notion
+![Talk To Notion Workflow](Talk_To_Notion/Talk_To_Notion.png)
+
+This project automates the process of receiving voice messages via Telegram, transcribing and summarizing them using OpenAI, and storing the summary in a Notion page for efficient note-taking and organization.
+
+I needed to summarize every task i have or any idea i get instantly in my notion so i get to think about it any other time, 
+
+**(This project will be so useful for people who overthink alot, speically late in night )**
+
+### ⚙️ Workflow Overview
+
+The automation is triggered when a voice message is received via Telegram. The steps are as follows:
+
+The process begins with the **Telegram Trigger**, which activates when a voice message (with `audio/ogg` MIME type) is sent to the Telegram bot.
+
+The **If** condition checks if the incoming message is a valid voice file. If true, the **Telegram** node downloads the audio file using the file ID.
+
+The downloaded audio is sent to the **OpenAI** node, which uses the OpenAI API to transcribe the audio into text.
+
+The transcribed text is then passed to a second **OpenAI** node (using the `gpt-4-turbo-preview` model), which generates a structured JSON summary. The summary includes:
+- **Title**: A concise title for the audio content.
+- **Summary**: A brief overview of the content.
+- **Main Points**, **Action Items**, **Follow-ups**, **Stories**, **References**, **Arguments**, **Related Topics**: Lists of relevant details, with "Nothing found for this summary list type" for empty categories.
+- **Sentiment**: Sentiment analysis of the content (e.g., positive, neutral, negative).
+  
+Finally, the **Notion** node creates a new page in Notion (using the provided page ID) with a heading "Summary" and the generated summary content appended below it.
+
+You can see Sample of a result Here :   
+![Workflow](Telegram_Assistant/test.png)
+
