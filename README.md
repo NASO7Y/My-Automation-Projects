@@ -1,6 +1,18 @@
 # My-Automation-Projects
 > Every word here is written by me, so forgive me for any mistake.
-  
+
+## Projects
+- [Sheet Auto Responder](#1-sheet-auto-responder)
+- [Auto Scraper](#2-auto-scraper)
+- [Job Applying Agent](#3-job-applying-agent)
+- [CV Ranking Agent](#4-cv-ranking-agent)
+- [Invoice Handler](#5-invoice-handler)
+- [LinkedIn Content Engine](#6-linkedin-content-engine)
+- [Analytics Automation Engine](#7-analytics-automation-engine)
+- [Telegram Assistant](#8-telegram-assistant)
+- [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)
+
+
 -------------------------------------------------------------------------------------------   
 ## (1) 📩 Sheet Auto Responder
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
