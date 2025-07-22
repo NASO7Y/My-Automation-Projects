@@ -286,7 +286,7 @@ The transcribed text is then passed to a second **OpenAI** node (using the `gpt-
 - **Main Points**, **Action Items**, **Follow-ups**, **Stories**, **References**, **Arguments**, **Related Topics**: Lists of relevant details, with "Nothing found for this summary list type" for empty categories.
 - **Sentiment**: Sentiment analysis of the content (e.g., positive, neutral, negative).
   
-Finally, the **Notion** node creates a new page in Notion (using the provided page ID) with a heading "Summary" and the generated summary content appended below it.
+Finally, the **Notion** node creates a new page in Notion with a heading "Summary" and the generated summary content appended below it.
 
 You can see Sample of a result Here :   
 
