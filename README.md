@@ -274,7 +274,7 @@ I needed to summarize every task i have or any idea i get instantly in my notion
 
 The automation is triggered when a voice message is received via Telegram. The steps are as follows:
 
-The process begins with the **Telegram Trigger**, which activates when a voice message (with `audio/ogg` MIME type) is sent to the Telegram bot.
+The process begins with the **Telegram Trigger**, which activates when a voice message is sent to the Telegram bot.
 
 The **If** condition checks if the incoming message is a valid voice file. If true, the **Telegram** node downloads the audio file using the file ID.
 
