@@ -268,7 +268,7 @@ This project automates the process of receiving voice messages via Telegram, tra
 
 I needed to summarize every task i have or any idea i get instantly in my notion so i get to think about it any other time, 
 
-**(This project will be so useful for people who overthink alot, speically late in night )**
+**(This project will be so useful for people who overthink alot, speically late at night )**
 
 ### ⚙️ Workflow Overview
 
