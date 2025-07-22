@@ -14,6 +14,8 @@
 - [Analytics Automation Engine](#7-analytics-automation-engine)
 - [Telegram Assistant](#8-telegram-assistant)
 - [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)
+- [Talk To Notion](#10-talk-to-notion)
+ 
   
 -------------------------------------------------------------------------------------------   
 
@@ -287,5 +289,5 @@ The transcribed text is then passed to a second **OpenAI** node (using the `gpt-
 Finally, the **Notion** node creates a new page in Notion (using the provided page ID) with a heading "Summary" and the generated summary content appended below it.
 
 You can see Sample of a result Here :   
-![Workflow](Telegram_Assistant/test.png)
+![Workflow](Talk_To_Notion/notion_sample.png)
 
