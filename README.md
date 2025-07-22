@@ -261,7 +261,7 @@ Finally, the **Default Data Loader** module `processes all the stored vector` en
 
 -------------------------------------------------------------------------------------------
 
-## (10)  Talk To Notion
+## (10) Talk To Notion
 ![Talk To Notion Workflow](Talk_To_Notion/Talk_To_Notion.png)
 
 This project automates the process of receiving voice messages via Telegram, transcribing and summarizing them using OpenAI, and storing the summary in a Notion page for efficient note-taking and organization.
