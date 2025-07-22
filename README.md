@@ -3,7 +3,7 @@
 
 ## Projects
 - [Sheet Auto Responder](#sheet-auto-responder)
-- [Auto Scraper](#2-auto-scraper)
+- [Auto Scraper](#auto-scraper)
 - [Job Applying Agent](#3-job-applying-agent)
 - [CV Ranking Agent](#4-cv-ranking-agent)
 - [Invoice Handler](#5-invoice-handler)
@@ -40,7 +40,7 @@ and also **Log to Google Sheet**
 
 
 -------------------------------------------------------------------------------------------
-## (2) 📡  Auto Scraper
+## Auto Scraper
 ![Auto Scraper workflow](Auto_Scraper/Auto_Scraper.png)
 
 This project automates the process of scraping country data (Country Name, Country Population, Country Area, Country Capital) from a website, for example I used [Scrapethis](https://www.scrapethissite.com/pages/simple/) then 
@@ -61,7 +61,7 @@ The final step is to Update **Google Sheet**, where the scraped data (up to 250 
 
 -------------------------------------------------------------------------------------------
 
-## (3) 💼 Job Applying Agent
+## (3) Job Applying Agent
 ![Job_Applying_Agent](Job_Applying_Agent/Job_Applying_Agent.png)
 
 This project automates the process of handling daily job application messages, filtering relevant job offers based on personal qualifications, generating tailored job applications, and sending them via email to the respective companies.
