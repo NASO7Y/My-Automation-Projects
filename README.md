@@ -42,7 +42,6 @@ what is that ? it's A 30-second delay (`Wait`), the purpose i did it is to intro
 and also **Log to Google Sheet**  
  A copy of the response is also appended to another Google Sheet (`Google Sheets1`) for logging and tracking purposes.
 
-
 -------------------------------------------------------------------------------------------
 ## (2) Auto Scraper
 ![Auto Scraper workflow](Auto_Scraper/Auto_Scraper.png)
