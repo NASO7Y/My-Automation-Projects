@@ -3,7 +3,7 @@
 > if you've learned or this repo was useful for you by any chance, Don't forget to star it and a Follow will be appreciated
 -------------------------------------------------------------------------------------------   
 
-## Projects
+## Projects/:
 > Click on any project to instantly access it's readme 
 - [Sheet Auto Responder](#1-sheet-auto-responder)
 - [Auto Scraper](#2-auto-scraper)
