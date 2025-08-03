@@ -1,6 +1,6 @@
 # My-Automation-Projects 
 > Every word here is written by me, so forgive me for any mistake.
-> if you've learned or this repo was useful for you by any chance, Don't forget to star it and a Follow will be appreciated
+> This took so much effort from Me so, if you've learned or this repo was useful for you by any chance, Don't forget to star it and a Follow will be appreciated
 -------------------------------------------------------------------------------------------   
 
 ## Projects/:
@@ -14,8 +14,7 @@
 - [Analytics Automation Engine](#7-analytics-automation-engine)
 - [Telegram Assistant](#8-telegram-assistant)
 - [Real Data to Vector Data](#9-real-data-to-vector-data-with-explaination)  -> This Readme Is So Useful For RAG-Based Applications.
-- [Talk To Notion](#10-talk-to-notion)
- 
+- [Talk To Notion](#10-talk-to-notion) 
   
 -------------------------------------------------------------------------------------------   
 
