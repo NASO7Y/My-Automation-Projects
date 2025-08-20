@@ -58,7 +58,7 @@ Next, the **HTML step** parses the retrieved web content. This is followed by th
 -- I COULD JUST USED ( SPLIT OUT ) BUT I WANTED TO TEST MY JAVASCRIPT CODE ABILITY😂 
 
 The final step is to Update **Google Sheet**, where the scraped data (up to 250 items) is appended to a Google Sheet for storage and tracking
-
+ 
 -------------------------------------------------------------------------------------------
 
 ## (3) Job Applying Agent
