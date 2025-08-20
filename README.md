@@ -5,7 +5,7 @@
 ## Projects:
 > Click on any project to instantly access it's readme 
 - [Sheet Auto Responder](#1-sheet-auto-responder)
-- [Auto Scraper](#2-auto-scraper)
+- [Auto Scraper](#2-auto-scraper) 
 - [Job Applying Agent](#3-job-applying-agent)
 - [CV Ranking Agent](#4-cv-ranking-agent) 
 - [Invoice Handler](#5-invoice-handler)
