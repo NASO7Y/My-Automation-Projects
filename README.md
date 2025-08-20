@@ -16,7 +16,7 @@
 - [Talk To Notion](#10-talk-to-notion) 
 -------------------------------------------------------------------------------------------    
  
-## (1) Sheet Auto Responder
+## (1) Sheet Auto Responder 
 ![Sheet Responder Workflow](Email_Sender/Sheet_Responder.png) 
 This project automates the process of reading user data from a Google Sheet, generating an AI-based response using a large language model (LLM), and sending that response via Gmail — while also logging the reply back to a Google Sheet.
  
